@@ -23,13 +23,11 @@ import java.lang.annotation.Target;
  * generate an implementation class for the annotated abstract class, implementing the standard
  * {@link Object} methods like {@link Object#equals equals} to have conventional value semantics. A
  * simple example: <pre>
- * <p/>
  *   &#64;AutoParcel
  *   abstract class Person implements Parcelable {
  *     static Person create(String name, int id) {
  *       return new AutoParcel_Person(name, id);
  *     }
- * <p/>
  *     abstract String name();
  *     abstract int id();
  *   }</pre>
@@ -38,7 +36,7 @@ import java.lang.annotation.Target;
  * @author Kevin Bourrillion
  * @see <a href="https://github.com/frankiesardo/auto-parcel">AutoParcel User's Guide</a>
  */
-@Retention(RetentionPolicy.SOURCE)
+@Retention(RetentionPolicy.CLASS)
 @Target(ElementType.TYPE)
 public @interface AutoParcel {
 
@@ -47,16 +45,13 @@ public @interface AutoParcel {
    * to serve as a <i>builder</i> for the value-type class it is nested within. As a simple example,
    * here is an alternative way to write the {@code Person} class mentioned in the {@link AutoParcel}
    * example: <pre>
-   * <p/>
    *   &#64;AutoParcel
    *   abstract class Person {
    *     static Builder builder() {
    *       return new AutoParcel_Person.Builder();
    *     }
-   * <p/>
    *     abstract String name();
    *     abstract int id();
-   * <p/>
    *     &#64;AutoParcel.Builder
    *     interface Builder {
    *       Builder name(String x);
@@ -64,12 +59,11 @@ public @interface AutoParcel {
    *       Person build();
    *     }
    *   }</pre>
-   * <p/>
    * <p><b>This API is provisional and subject to change.</b></p>
    *
    * @author Éamonn McManus
    */
-  @Retention(RetentionPolicy.SOURCE)
+  @Retention(RetentionPolicy.CLASS)
   @Target(ElementType.TYPE)
   public @interface Builder {
   }
@@ -80,7 +74,7 @@ public @interface AutoParcel {
    * the {@link Builder @AutoParcel.Builder} implementation, immediately after constructing the new
    * object. It can throw an exception if the new object fails validation checks.
    */
-  @Retention(RetentionPolicy.SOURCE)
+  @Retention(RetentionPolicy.CLASS)
   @Target(ElementType.METHOD)
   public @interface Validate {
   }

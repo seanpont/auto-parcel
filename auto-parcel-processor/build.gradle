@@ -6,10 +6,13 @@ sourceCompatibility = '1.6'
 
 dependencies {
   compile project(':auto-parcel')
+  compile 'com.google.auto:auto-common:1.0-SNAPSHOT'
   compile 'com.google.auto.service:auto-service:1.0-rc2'
   compile 'com.google.code.findbugs:jsr305:2.0.3'
   compile 'org.apache.velocity:velocity:1.7'
   compile 'org.ow2.asm:asm:4.1'
+  compile 'com.squareup:javapoet:1.0.0'
+  compile 'com.google.code.gson:gson:2.3.1'
 
   testCompile files(System.getenv("JAVA_HOME") + "/lib/tools.jar")
   testCompile 'com.google.guava:guava-testlib:17.0'

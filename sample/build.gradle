@@ -13,5 +13,6 @@ android {
 
 dependencies {
   compile project(':auto-parcel')
+  compile 'com.google.code.gson:gson:2.3.1'
   apt project(':auto-parcel-processor')
 }

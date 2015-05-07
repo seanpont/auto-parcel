@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import model2.Credentials;
+
 public class MainActivity extends Activity {
 
   @Override
@@ -18,5 +20,7 @@ public class MainActivity extends Activity {
         startActivity(detailIntent);
       }
     });
+    Credentials c = Credentials.builder().accountId(1234).apiKey("1234").build();
+    System.out.println(c);
   }
 }
