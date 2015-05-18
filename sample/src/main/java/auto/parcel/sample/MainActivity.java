@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import model2.Credentials;
+import auto.parcel.sample.model2.Credentials;
 
 public class MainActivity extends Activity {
 

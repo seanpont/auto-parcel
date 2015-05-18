@@ -1,4 +1,4 @@
-package model2;
+package auto.parcel.sample.model2;
 
 import com.google.gson.TypeAdapter;
 import com.google.gson.stream.JsonReader;
@@ -9,7 +9,6 @@ import java.io.IOException;
 public class CredentialsAdapter extends TypeAdapter<Credentials> {
 
   @Override public void write(JsonWriter out, Credentials credentials) throws IOException {
-    // implement write: combine firstName and lastName into name
     out.beginObject();
     out.name("accountId").value(credentials.accountId());
     out.name("apiKey").value(credentials.apiKey());
@@ -20,11 +19,13 @@ public class CredentialsAdapter extends TypeAdapter<Credentials> {
     Credentials.Builder builder = Credentials.builder();
     in.beginObject();
     while (in.hasNext()) {
-      String name = in.nextName();
-      if (name.equals("accountId")) {
-        builder.accountId(in.nextInt());
-      } else if (name.equals("apiKey")) {
-        builder.apiKey(in.nextString());
+      switch (in.nextName()) {
+        case "accountId":
+          builder.accountId(in.nextInt());
+          break;
+        case "apiKey":
+          builder.apiKey(in.nextString());
+          break;
       }
     }
     in.endObject();

@@ -1,13 +1,13 @@
-package model2;
+package auto.parcel.sample.model2;
 
 import com.google.gson.annotations.JsonAdapter;
 
 import auto.parcel.AutoAdapter;
 import auto.parcel.AutoParcel;
-import model2.Credentials$Adapter;
 
 @AutoParcel
-@AutoAdapter @JsonAdapter(Credentials$Adapter.class)
+@AutoAdapter
+@JsonAdapter(auto.parcel.sample.model2.AutoAdapter_Credentials.class)
 public abstract class Credentials {
 
   public abstract int accountId();
@@ -19,9 +19,9 @@ public abstract class Credentials {
 
   @AutoParcel.Builder
   public interface Builder {
-    public Builder accountId(int accountId);
-    public Builder apiKey(String apiKey);
-    public Credentials build();
+    Builder accountId(int accountId);
+    Builder apiKey(String apiKey);
+    Credentials build();
   }
 
 }

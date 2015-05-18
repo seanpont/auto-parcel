@@ -3,7 +3,7 @@ package auto.parcel.sample;
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.TextView;
-import model3.Person;
+import auto.parcel.sample.model3.Person;
 
 public class DetailActivity extends Activity {
 

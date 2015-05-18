@@ -1,4 +1,4 @@
-package model2;
+package auto.parcel.sample.model2;
 
 import auto.parcel.AutoParcel;
 import android.os.Parcelable;

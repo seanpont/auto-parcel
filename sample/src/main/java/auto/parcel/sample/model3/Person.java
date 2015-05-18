@@ -1,11 +1,11 @@
-package model3;
+package auto.parcel.sample.model3;
 
 import auto.parcel.AutoParcel;
 import android.os.Parcelable;
 import java.util.List;
 import java.util.Map;
-import model1.HeightBucket;
-import model2.Address;
+import auto.parcel.sample.model1.HeightBucket;
+import auto.parcel.sample.model2.Address;
 
 @AutoParcel
 public abstract class Person implements Parcelable {

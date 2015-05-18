@@ -3,9 +3,9 @@ package auto.parcel.sample;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
-import model1.HeightBucket;
-import model2.Address;
-import model3.Person;
+import auto.parcel.sample.model1.HeightBucket;
+import auto.parcel.sample.model2.Address;
+import auto.parcel.sample.model3.Person;
 
 public interface SampleData {
 
