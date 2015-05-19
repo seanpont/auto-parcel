@@ -169,7 +169,7 @@ public class AutoAdapterProcessor extends AbstractProcessor {
         builder.indent();
         final String readerMethod = jsonReaderMethodFor(method);
         log("builder method: %s, jsonReaderMethod: %s", method, readerMethod);
-        builder.addStatement("builder.$N(in.$L())", method.getSimpleName(), readerMethod);
+        builder.addStatement("builder.$N($L)", method.getSimpleName(), readerMethod);
         builder.addStatement("break");
         builder.unindent();
       }
@@ -187,16 +187,25 @@ public class AutoAdapterProcessor extends AbstractProcessor {
     log("%s: %s kind: %s", method, type, type.getKind());
     switch (type.getKind()) {
       case INT:
-        return "nextInt";
+        return "in.nextInt()";
       case LONG:
-        return "nextLong";
+        return "in.nextLong()";
       case FLOAT:
       case DOUBLE:
-        return "nextDouble";
+        return "in.nextDouble()";
       case BOOLEAN:
-        return "nextBoolean";
+        return "in.nextBoolean()";
+      case DECLARED:
+        TypeElement typeElement = MoreElements.asType(MoreTypes.asElement(type));
+        final String qualifiedName = typeElement.getQualifiedName().toString();
+        log("qualified name: %s", qualifiedName);
+        if (qualifiedName.equals(String.class.getCanonicalName())) {
+          return "in.nextString()";
+        } else {
+          return String.format("new %s(in.nextString())", qualifiedName);
+        }
       default:
-        return "nextString";
+        throw new RuntimeException("Unknown type");
     }
   }
 
